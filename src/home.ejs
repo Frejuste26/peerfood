@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/theme.css">
+</head>
+<body>
+    <%- include("./Components/loader.ejs") %>
+    <div class="app-container">
+        <%- include("./Components/sidebare.ejs") %>
+        <div class="page-wrapper">
+            <%- include("./Components/navbar.ejs") %>
+            <div class="page-breadcrumb">
+                <%- include("./Components/breadcrumb.ejs") %>
+            </div>
+            <div class="container-fluid">
+                <!-- Première rangée - Stats Cards -->
+                <div class="row">
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="stats-card">
+                            <div class="stats-icon orders">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14H6v-2h6v2zm4-4H6v-2h10v2zm0-4H6V7h10v2z"/>
+                                </svg>
+                            </div>
+                            <div class="stats-info">
+                                <h3>100</h3>
+                                <p>Commandes ce mois</p>
+                            </div>
+                            <div class="stats-trend positive">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/>
+                                </svg>
+                                <span>+12.5% par rapport au mois dernier</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="stats-card">
+                            <div class="stats-icon revenue">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z"/>
+                                </svg>
+                            </div>
+                            <div class="stats-info">
+                                <h3>150,000 €</h3>
+                                <p>Chiffre d'affaires</p>
+                            </div>
+                            <div class="stats-trend positive">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/>
+                                </svg>
+                                <span>+8.2% par rapport au mois dernier</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="stats-card">
+                            <div class="stats-icon products">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M21.6 8.2l-7.2-4.1c-.7-.4-1.6-.4-2.3 0L4.9 8.2c-.5.3-.9.8-.9 1.4v4.7c0 .6.3 1.1.9 1.4l7.2 4.1c.7.4 1.6.4 2.3 0l7.2-4.1c.5-.3.9-.8.9-1.4V9.6c0-.6-.4-1.1-.9-1.4zM12 4.5l6.3 3.6-6.3 3.6L5.7 8.1 12 4.5zM5 9.8l6 3.4v6.8l-6-3.4V9.8zm8 10.2v-6.8l6-3.4v6.8l-6 3.4z"/>
+                                </svg>
+                            </div>
+                            <div class="stats-info">
+                                <h3>520</h3>
+                                <p>Produits en stock</p>
+                            </div>
+                            <div class="stats-trend negative">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"/>
+                                </svg>
+                                <span>-3.1% par rapport au mois dernier</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 col-lg-3">
+                        <div class="stats-card">
+                            <div class="stats-icon suppliers">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/>
+                                </svg>
+                            </div>
+                            <div class="stats-info">
+                                <h3>45</h3>
+                                <p>Fournisseurs actifs</p>
+                            </div>
+                            <div class="stats-trend positive">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.58 5.59L20 12l-8-8-8 8z"/>
+                                </svg>
+                                <span>+2.4% par rapport au mois dernier</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Deuxième rangée - Graphique et Top Produits -->
+                <div class="row mt-4">
+                    <div class="col-12 col-lg-8">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="card-title">Évolution des ventes</h5>
+                                <div class="card-tools">
+                                    <select class="form-select form-select-sm">
+                                        <option>7 derniers jours</option>
+                                        <option>Ce mois</option>
+                                        <option>Cette année</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div id="salesChart"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5 class="card-title">Top Produits</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="product-list">
+                                    <div class="product-item">
+                                        <img src="/img/product1.jpg" alt="Product 1">
+                                        <div class="product-info">
+                                            <h6>Produit A</h6>
+                                            <span class="text-success">€2,500</span>
+                                        </div>
+                                        <div class="product-sales">
+                                            <span>+24%</span>
+                                        </div>
+                                    </div>
+                                    <!-- Autres produits -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Troisième rangée - Commandes et Activités -->
+                <div class="row mt-4">
+                    <div class="col-12 col-lg-6">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="card-title">Dernières Commandes</h5>
+                                <div class="card-tools">
+                                    <button class="btn btn-sm btn-outline-primary">Voir tout</button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Client</th>
+                                                <th>Statut</th>
+                                                <th>Montant</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>#123</td>
+                                                <td>John Doe</td>
+                                                <td><span class="badge bg-success">Livré</span></td>
+                                                <td>€150</td>
+                                            </tr>
+                                            <!-- Répéter pour autres commandes -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="card-title">Activités Récentes</h5>
+                                <div class="card-tools">
+                                    <button class="btn btn-sm btn-outline-primary">Rafraîchir</button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="activity-feed">
+                                    <div class="activity-item">
+                                        <div class="activity-icon bg-primary">
+                                            <i class="mdi mdi-plus"></i>
+                                        </div>
+                                        <div class="activity-content">
+                                            <span class="text-muted">Il y a 5 min</span>
+                                            <p>Nouvelle commande #123 reçue</p>
+                                        </div>
+                                    </div>
+                                    <!-- Répéter pour autres activités -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Footer -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <%- include("./Components/footer.ejs") %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js" integrity="sha256-AlTido85uXPlSyyaZNsjJXeCs07eSv3r43kyCVc8ChI=" crossorigin="anonymous"></script>
+    <script src="/js/theme.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+    window.addEventListener('load', function() {
+        // Cache le loader après le chargement complet
+        const loader = document.querySelector('.loader-wrapper');
+        setTimeout(() => {
+            loader.classList.add('loader-hidden');
+        }, 1000); // 1 seconde de délai pour montrer le loader
+        
+        // Supprime le loader après la transition
+        loader.addEventListener('transitionend', () => {
+            document.body.removeChild(loader);
+        });
+    });
+
+    // Configuration du graphique
+    const margin = {top: 20, right: 30, bottom: 30, left: 60};
+    const width = 800 - margin.left - margin.right;
+    const height = 300 - margin.top - margin.bottom;
+
+    // Données de test
+    const data = [
+        { date: '2024-01', value: 30 },
+        { date: '2024-02', value: 45 },
+        { date: '2024-03', value: 35 },
+        { date: '2024-04', value: 60 },
+        { date: '2024-05', value: 50 },
+        { date: '2024-06', value: 75 },
+        { date: '2024-07', value: 85 }
+    ];
+
+    // Création du SVG
+    const svg = d3.select("#salesChart")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", `translate(${margin.left},${margin.top})`);
+
+    // Échelles
+    const x = d3.scaleTime()
+        .domain(d3.extent(data, d => new Date(d.date)))
+        .range([0, width]);
+
+    const y = d3.scaleLinear()
+        .domain([0, d3.max(data, d => d.value)])
+        .range([height, 0]);
+
+    // Ligne
+    const line = d3.line()
+        .x(d => x(new Date(d.date)))
+        .y(d => y(d.value))
+        .curve(d3.curveMonotoneX);
+
+    // Ajout des axes
+    svg.append("g")
+        .attr("transform", `translate(0,${height})`)
+        .call(d3.axisBottom(x)
+            .ticks(7)
+            .tickFormat(d3.timeFormat("%b %Y")));
+
+    svg.append("g")
+        .call(d3.axisLeft(y));
+
+    // Ajout de la ligne
+    const path = svg.append("path")
+        .datum(data)
+        .attr("fill", "none")
+        .attr("stroke", "var(--orange-300)")
+        .attr("stroke-width", 2)
+        .attr("d", line);
+
+    // Animation de la ligne
+    const pathLength = path.node().getTotalLength();
+
+    path.attr("stroke-dasharray", pathLength)
+        .attr("stroke-dashoffset", pathLength)
+        .transition()
+        .duration(2000)
+        .attr("stroke-dashoffset", 0);
+
+    // Ajout des points
+    svg.selectAll(".dot")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("class", "dot")
+        .attr("cx", d => x(new Date(d.date)))
+        .attr("cy", d => y(d.value))
+        .attr("r", 0)
+        .attr("fill", "var(--orange-300)")
+        .transition()
+        .delay((d, i) => i * 150)
+        .duration(500)
+        .attr("r", 5);
+
+    // Ajout de l'aire sous la courbe
+    const area = d3.area()
+        .x(d => x(new Date(d.date)))
+        .y0(height)
+        .y1(d => y(d.value))
+        .curve(d3.curveMonotoneX);
+
+    svg.append("path")
+        .datum(data)
+        .attr("class", "area")
+        .attr("fill", "var(--orange-100)")
+        .attr("fill-opacity", 0.3)
+        .attr("d", area);
+
+    // Interaction au survol
+    const tooltip = d3.select("#salesChart")
+        .append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 0);
+
+    svg.selectAll(".dot")
+        .on("mouseover", function(event, d) {
+            d3.select(this)
+                .transition()
+                .duration(200)
+                .attr("r", 8);
+
+            tooltip.transition()
+                .duration(200)
+                .style("opacity", .9);
+            
+            tooltip.html(`Ventes: ${d.value}k€<br>Date: ${d3.timeFormat("%B %Y")(new Date(d.date))}`)
+                .style("left", (event.pageX + 10) + "px")
+                .style("top", (event.pageY - 28) + "px");
+        })
+        .on("mouseout", function() {
+            d3.select(this)
+                .transition()
+                .duration(200)
+                .attr("r", 5);
+
+            tooltip.transition()
+                .duration(500)
+                .style("opacity", 0);
+        });
+
+    // Animation des nombres dans les stats cards
+    function animateValue(obj, start, end, duration) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            obj.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString();
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
+    // Animer les valeurs au chargement
+    document.querySelectorAll('.stats-info h3').forEach(el => {
+        const finalValue = parseInt(el.innerText.replace(/[^0-9]/g, ''));
+        animateValue(el, 0, finalValue, 2000);
+    });
+
+    // Filtrage des données du graphique
+    document.querySelector('.form-select').addEventListener('change', function(e) {
+        const period = e.target.value;
+        // Simuler un chargement de données
+        const loader = document.createElement('div');
+        loader.className = 'chart-loader';
+        document.querySelector('#salesChart').appendChild(loader);
+        
+        setTimeout(() => {
+            // Mettre à jour le graphique avec les nouvelles données
+            updateChart(period);
+            loader.remove();
+        }, 800);
+    });
+
+    // Interaction avec le tableau
+    document.querySelectorAll('.table tbody tr').forEach(row => {
+        row.addEventListener('click', function() {
+            // Afficher les détails de la commande
+            const orderId = this.querySelector('td').textContent;
+            showOrderDetails(orderId);
+        });
+    });
+
+    // Rafraîchissement des activités
+    document.querySelector('.btn-outline-primary').addEventListener('click', function() {
+        const feed = document.querySelector('.activity-feed');
+        feed.style.opacity = '0.5';
+        
+        setTimeout(() => {
+            // Simuler l'ajout de nouvelles activités
+            const newActivity = document.createElement('div');
+            newActivity.className = 'activity-item';
+            newActivity.innerHTML = `
+                <div class="activity-icon bg-primary">
+                    <i class="mdi mdi-plus"></i>
+                </div>
+                <div class="activity-content">
+                    <span class="text-muted">À l'instant</span>
+                    <p>Nouvelle activité ajoutée</p>
+                </div>
+            `;
+            feed.insertBefore(newActivity, feed.firstChild);
+            feed.style.opacity = '1';
+        }, 1000);
+    });
+
+    // Système de notifications
+    function showNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.innerHTML = `
+            <div class="notification-content">
+                <div class="notification-message">${message}</div>
+            </div>
+        `;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.classList.add('show');
+        }, 100);
+        
+        setTimeout(() => {
+            notification.classList.remove('show');
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
+    }
+
+    // Tri des tableaux
+    document.querySelectorAll('th').forEach(header => {
+        header.addEventListener('click', function() {
+            const table = this.closest('table');
+            const index = Array.from(this.parentElement.children).indexOf(this);
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            const isAscending = this.classList.contains('asc');
+            
+            rows.sort((a, b) => {
+                const aValue = a.children[index].textContent;
+                const bValue = b.children[index].textContent;
+                return isAscending ? 
+                    bValue.localeCompare(aValue) : 
+                    aValue.localeCompare(bValue);
+            });
+            
+            this.classList.toggle('asc');
+            rows.forEach(row => table.querySelector('tbody').appendChild(row));
+            
+            showNotification('Tableau trié avec succès');
+        });
+    });
+
+    // Amélioration de la modal
+    function showOrderDetails(orderId) {
+        const modal = document.createElement('div');
+        modal.className = 'modal';
+        modal.innerHTML = `
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>Détails de la commande ${orderId}</h5>
+                        <button type="button" class="close">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="order-details">
+                            <div class="order-info">
+                                <h6>Informations client</h6>
+                                <p>Nom: John Doe</p>
+                                <p>Email: john@example.com</p>
+                                <p>Téléphone: +33 6 12 34 56 78</p>
+                            </div>
+                            <div class="order-products">
+                                <h6>Produits commandés</h6>
+                                <ul>
+                                    <li>Produit A - 2x - 50€</li>
+                                    <li>Produit B - 1x - 30€</li>
+                                </ul>
+                            </div>
+                            <div class="order-total">
+                                <h6>Total: 130€</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        setTimeout(() => modal.classList.add('show'), 10);
+        
+        modal.querySelector('.close').addEventListener('click', () => {
+            modal.classList.remove('show');
+            setTimeout(() => modal.remove(), 300);
+        });
+    }
+
+    // Amélioration du graphique
+    function updateChart(period) {
+        // Simuler de nouvelles données selon la période
+        const newData = generateDataForPeriod(period);
+        
+        // Mettre à jour les échelles
+        x.domain(d3.extent(newData, d => new Date(d.date)));
+        y.domain([0, d3.max(newData, d => d.value)]);
+        
+        // Animer la transition
+        const t = d3.transition().duration(750);
+        
+        // Mettre à jour la ligne
+        path.datum(newData)
+            .transition(t)
+            .attr("d", line);
+        
+        // Mettre à jour l'aire
+        svg.select(".area")
+            .datum(newData)
+            .transition(t)
+            .attr("d", area);
+        
+        // Mettre à jour les points
+        const dots = svg.selectAll(".dot")
+            .data(newData);
+        
+        dots.exit().remove();
+        
+        dots.enter()
+            .append("circle")
+            .attr("class", "dot")
+            .merge(dots)
+            .transition(t)
+            .attr("cx", d => x(new Date(d.date)))
+            .attr("cy", d => y(d.value))
+            .attr("r", 5)
+            .attr("fill", "var(--orange-300)");
+    }
+
+    // Fonction helper pour générer des données
+    function generateDataForPeriod(period) {
+        // Simuler différentes données selon la période sélectionnée
+        switch(period) {
+            case '7 derniers jours':
+                return Array.from({length: 7}, (_, i) => ({
+                    date: new Date(Date.now() - (6-i) * 24 * 60 * 60 * 1000),
+                    value: Math.random() * 100
+                }));
+            case 'Ce mois':
+                return Array.from({length: 30}, (_, i) => ({
+                    date: new Date(Date.now() - (29-i) * 24 * 60 * 60 * 1000),
+                    value: Math.random() * 100
+                }));
+            default:
+                return Array.from({length: 12}, (_, i) => ({
+                    date: new Date(2024, i, 1),
+                    value: Math.random() * 100
+                }));
+        }
+    }
+    </script>
+</body>
+</html>

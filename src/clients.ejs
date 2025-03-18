@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Clients</title>
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/theme.css">
+</head>
+<body>
+    <%- include("./Components/loader.ejs") %>
+    <div class="app-container">
+        <%- include("./Components/sidebare.ejs") %>
+        <div class="page-wrapper">
+            <%- include("./Components/navbar.ejs") %>
+            <div class="page-breadcrumb">
+                <%- include("./Components/breadcrumb.ejs") %>
+            </div>
+            
+            <div class="container-fluid">
+                <!-- En-tête avec actions -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="clients-header">
+                            <div class="header-title">
+                                <h1>Gestion des Clients</h1>
+                                <p class="text-muted">Gérez votre base clients et suivez leurs activités</p>
+                            </div>
+                            <div class="header-actions">
+                                <button class="btn btn-primary" data-action="add-client" aria-label="Ajouter un nouveau client">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                                    </svg>
+                                    Nouveau Client
+                                </button>
+                                <button class="btn btn-outline-primary" id="exportCsv" aria-label="Importer des clients">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                        <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                                    </svg>
+                                    Exporter
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filtres et recherche -->
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="clients-filters">
+                                    <div class="search-box">
+                                        <input id="search-input" type="text" class="form-control" placeholder="Rechercher un client..." aria-label="Rechercher un client">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+                                            <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                                        </svg>
+                                    </div>
+                                    <div class="filters-group">
+                                        <select class="form-select" data-filter="status" aria-label="Filtrer par statut">
+                                            <option value="">Statut</option>
+                                            <option value="active">Actif</option>
+                                            <option value="inactive">Inactif</option>
+                                        </select>
+                                        <button class="btn btn-outline-secondary" data-action="reset-filters" aria-label="Réinitialiser les filtres">
+                                            Réinitialiser
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Liste des clients -->
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover" aria-label="Liste des clients">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <input type="checkbox" class="form-check-input" id="selectAll" aria-label="Sélectionner tous les clients">
+                                                </th>
+                                                <th>Client</th>
+                                                <th>Nom d'utilisateur</th>
+                                                <th>Téléphone</th>
+                                                <th>Statut</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Rows will be dynamically populated -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="pagination-wrapper">
+                            <div class="pagination-info" id="paginationInfo">
+                                Affichage de 1-10 sur 100 clients
+                            </div>
+                            <ul class="pagination" id="pagination">
+                                <!-- Les pages seront générées dynamiquement -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <%- include("./Components/footer.ejs") %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Nouveau Client -->
+    <div class="modal" id="newClientModal" tabindex="-1" aria-labelledby="newClientModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newClientModalLabel">Nouveau Client</h5>
+                    <button type="button" class="modal-close" data-dismiss="modal" aria-label="Fermer">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="newClientForm">
+                        <div class="form-group">
+                            <label for="clientName">Nom complet</label>
+                            <input type="text" id="clientName" class="form-control" required placeholder="Ex: Jean Dupont"
+                                   pattern="^[a-zA-ZÀ-ÿ]+(?: [a-zA-ZÀ-ÿ]+)*$" aria-describedby="clientNameHelp">
+                            <small id="clientNameHelp" class="form-text text-muted">Le nom doit contenir uniquement des lettres et espaces</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="clientUsername">Nom d'utilisateur</label>
+                            <input type="text" id="clientUsername" class="form-control" required placeholder="Ex: jean_dupont"
+                                   pattern="^[a-zA-Z0-9_]{3,20}$" aria-describedby="clientUsernameHelp">
+                            <small id="clientUsernameHelp" class="form-text text-muted">3 à 20 caractères (lettres, chiffres, _)</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="clientPhone">Téléphone</label>
+                            <input type="tel" id="clientPhone" class="form-control" required placeholder="Ex: 06 12 34 56 78"
+                                   pattern="^(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}$" aria-describedby="clientPhoneHelp">
+                            <small id="clientPhoneHelp" class="form-text text-muted">Format invalide (ex: 06 12 34 56 78)</small>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                    <button type="button" class="btn btn-primary" id="saveClient">Enregistrer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <%- include("./Components/ripple-loader.ejs") %>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="/Js/theme.js"></script>
+    <script src="/Js/clients.js"></script>
+    <script src="/Js/loader.js"></script>
+</body>
+</html>

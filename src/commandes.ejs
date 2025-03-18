@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= title %></title>
+    <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/theme.css">
+</head>
+<%- include('Components/loader') %>
+<div class="app-container">
+    <%- include('Components/sidebare') %>
+
+    <div class="page-wrapper">
+        <%- include("./Components/navbar.ejs") %>
+        <div class="page-breadcrumb">
+            <%- include("./Components/breadcrumb.ejs") %>
+        </div>
+        <div class="container-fluid">
+            <!-- header avec des statistiques -->
+            <div class="orders-header">
+                <div class="stats-cards">
+                    <div class="stat-card analytics">
+                        <div class="stat-icon bg-primary-gradient">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14h-2v-4H6v-2h4V7h2v4h4v2h-4v4z"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">
+                                <span class="counter" data-target="2451">0</span>
+                            </div>
+                            <p>Total Commandes</p>
+                            <div class="stat-trend up">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                    <path d="M7 14l5-5 5 5H7z"/>
+                                </svg>
+                                <span>+12.5% vs mois dernier</span>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card analytics">
+                        <div class="stat-icon bg-warning-gradient">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">
+                                <span class="counter" data-target="185">0</span>
+                            </div>
+                            <p>En attente</p>
+                            <div class="stat-trend down">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                    <path d="M7 10l5 5 5-5H7z"/>
+                                </svg>
+                                <span>-3.2% cette semaine</span>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card analytics">
+                        <div class="stat-icon bg-success-gradient">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M19 3H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h14c1.103 0 2-.897 2-2V5c0-1.103-.897-2-2-2zm-7.933 13.481-3.774-3.774 1.414-1.414 2.226 2.226 4.299-5.159 1.537 1.28-5.702 6.841z"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">
+                                <span class="counter">0</span>
+                            </div>
+                            <p>Validée</p>
+                            <div class="stat-trend up">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                    <path d="M7 14l5-5 5 5H7z"/>
+                                </svg>
+                                <span>+8.9% ce mois</span>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="stat-card analytics">
+                        <div class="stat-icon bg-danger-gradient">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z"/>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <div class="stat-value">
+                                <span class="counter" data-target="32">0</span>
+                            </div>
+                            <p>Annulées</p>
+                            <div class="stat-trend stable">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                    <path d="M20 12l-2.5 2.5L15 12l2.5-2.5L20 12zm-9 0L8.5 14.5 6 12l2.5-2.5L11 12z"/>
+                                </svg>
+                                <span>Stable</span>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- filters-toolbar -->
+            <div class="filters-toolbar">
+                <div class="filters-left">
+
+                </div>
+                <div class="filters-right">
+                    <div class="action-buttons">
+                        <button class="btn btn-outline-secondary btn-with-icon" data-action="export-excel">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm-2 16H8v-2h4v2zm6-4H8v-2h10v2zm0-4H8V8h10v2z"/>
+                            </svg>
+                            <span>Exporter Excel</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filtres et recherche -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="orders-filters">
+                        <div class="search-box">
+                            <input type="text" class="form-control" placeholder="Rechercher une commande...">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+                                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                            </svg>
+                        </div>
+                        <div class="filters-group">
+                            <select class="form-select" data-filter="status">
+                                <option value="">Statut</option>
+                                <option value="pending">En attente</option>
+                                <option value="processing">En cours</option>
+                                <option value="completed">Terminée</option>
+                                <option value="cancelled">Annulée</option>
+                            </select>
+                            <button class="btn" data-action="reset-filters">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                    <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+                                </svg>
+                                Réinitialiser
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Liste des commandes -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input type="checkbox" class="form-check-input" id="selectAll">
+                                    </th>
+                                    <th>N° Commande</th>
+                                    <th>Client</th>
+                                    <th>Date</th>
+                                    <th>Total</th>
+                                    <th>Statut</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% for(let i = 0; i < 10; i++) { %>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="form-check-input">
+                                    </td>
+                                    <td>
+                                        <span class="order-number">#ORD-<%= 2024000 + i %></span>
+                                    </td>
+                                    <td>
+                                        <div class="client-info">
+                                            <div class="client-avatar">
+                                                <%= ['JD', 'ML', 'AB', 'CD'][i % 4] %>
+                                            </div>
+                                            <div class="client-details">
+                                                <h6><%= ['Jean Dupont', 'Marie Lambert', 'Alex Boucher', 'Claire Denis'][i % 4] %></h6>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><%= ['2024-03-01', '2024-02-28', '2024-02-27', '2024-02-26'][i % 4] %></td>
+                                    <td><%= ['149.99 €', '299.99 €', '89.99 €', '199.99 €'][i % 4] %></td>
+                                    <td>
+                                        <span class="badge <%= ['warning', 'info', 'success', 'danger'][i % 4] %>">
+                                            <%= ['En attente', 'En cours', 'Terminée', 'Annulée'][i % 4] %>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="actions">
+                                            <button class="btn btn-sm btn-icon" data-action="view" title="Voir">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                                    <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                                                </svg>
+                                            </button>
+                                            <button class="btn btn-sm btn-icon" data-action="edit" title="Modifier">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                                    <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
+                                                </svg>
+                                            </button>
+                                            <button class="btn btn-sm btn-icon text-danger" data-action="delete" title="Supprimer">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
+                                                    <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% } %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+                <!-- Footer -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <%- include("./Components/footer.ejs") %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.14.1/jquery-ui.min.js" integrity="sha256-AlTido85uXPlSyyaZNsjJXeCs07eSv3r43kyCVc8ChI=" crossorigin="anonymous"></script>
+<script src="/Js/theme.js"></script>
+<script src="/Js/orders.js"></script>
+<script>
+    window.addEventListener('load', function() {
+        // Cache le loader après le chargement complet
+        const loader = document.querySelector('.loader-wrapper');
+        setTimeout(() => {
+            loader.classList.add('loader-hidden');
+        }, 1000); // 1 seconde de délai pour montrer le loader
+        
+        // Supprime le loader après la transition
+        loader.addEventListener('transitionend', () => {
+            document.body.removeChild(loader);
+        });
+    });
+</script>
+</body>
+</html>
